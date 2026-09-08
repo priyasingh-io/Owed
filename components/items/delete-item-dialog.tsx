@@ -34,18 +34,18 @@ export function DeleteItemDialog({
 
   return (
     <div
-      className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/75 backdrop-blur-sm animate-in fade-in duration-200"
+      className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md animate-in fade-in duration-200"
       role="dialog"
       aria-modal="true"
     >
-      <div className="relative w-full max-w-md bg-[#0d1322] border border-slate-800 rounded-2xl shadow-2xl p-6 space-y-4">
+      <div className="relative w-full max-w-md bg-[#0e1118] border border-white/[0.1] rounded-2xl shadow-2xl p-6 space-y-4">
         <div className="flex items-start justify-between">
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-xl bg-red-500/10 border border-red-500/20 flex items-center justify-center text-red-400 shrink-0">
+            <div className="w-10 h-10 rounded-xl bg-rose-500/10 border border-rose-500/20 flex items-center justify-center text-rose-400 shrink-0">
               <AlertTriangle className="w-5 h-5" />
             </div>
             <div>
-              <h3 className="text-base font-semibold text-white">Delete Item</h3>
+              <h3 className="text-sm font-semibold text-white">Delete Item</h3>
               <p className="text-xs text-slate-400">
                 Are you sure you want to remove this item?
               </p>
@@ -54,27 +54,27 @@ export function DeleteItemDialog({
           <button
             onClick={onClose}
             disabled={isPending}
-            className="p-1.5 rounded-lg text-slate-400 hover:text-slate-200 hover:bg-slate-800 transition-colors"
+            className="p-1.5 rounded-lg text-slate-400 hover:text-slate-200 hover:bg-white/[0.06] transition-colors cursor-pointer"
           >
             <X className="w-4 h-4" />
           </button>
         </div>
 
-        <div className="p-3.5 rounded-xl bg-[#111726] border border-slate-800/80 text-sm text-slate-300">
+        <div className="p-3.5 rounded-xl bg-white/[0.03] border border-white/[0.08] text-xs text-slate-300">
           <span className="font-semibold text-white">{item.product_name}</span>
           {item.brand && <span className="text-slate-400"> &bull; {item.brand}</span>}
         </div>
 
         <p className="text-xs text-slate-400 leading-relaxed">
-          This will permanently delete this item and any associated warranty notifications. This action cannot be undone.
+          This will permanently remove this item and any associated warranty notifications from your vault. This action cannot be undone.
         </p>
 
-        <div className="pt-2 flex items-center justify-end gap-3">
+        <div className="pt-2 flex items-center justify-end gap-2.5">
           <button
             type="button"
             onClick={onClose}
             disabled={isPending}
-            className="px-4 py-2 text-xs sm:text-sm font-medium text-slate-400 hover:text-slate-200 rounded-lg hover:bg-slate-800/60 transition-colors"
+            className="px-4 py-2 text-xs sm:text-sm font-medium text-slate-400 hover:text-slate-200 rounded-xl hover:bg-white/[0.06] transition-colors cursor-pointer"
           >
             Cancel
           </button>
@@ -82,7 +82,7 @@ export function DeleteItemDialog({
             type="button"
             onClick={handleDelete}
             disabled={isPending}
-            className="inline-flex items-center justify-center px-4 py-2 rounded-lg bg-red-600 hover:bg-red-500 text-white text-xs sm:text-sm font-medium shadow-md shadow-red-600/30 active:scale-95 disabled:opacity-50 transition-all"
+            className="inline-flex items-center justify-center px-4 py-2 rounded-xl bg-rose-500 hover:bg-rose-600 text-white text-xs sm:text-sm font-semibold shadow-sm active:scale-95 disabled:opacity-50 transition-all cursor-pointer"
           >
             {isPending ? "Deleting..." : "Delete Item"}
           </button>

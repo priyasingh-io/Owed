@@ -46,36 +46,32 @@ export default function LoginPage() {
     mode === "signin" ? isSignInPending : mode === "signup" ? isSignUpPending : isMagicPending;
 
   return (
-    <div className="min-h-screen bg-[#090d16] text-slate-100 flex flex-col justify-center items-center px-4 py-12 selection:bg-blue-600 selection:text-white relative overflow-hidden">
-      {/* Background glow aesthetics */}
-      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-blue-600/10 rounded-full blur-3xl pointer-events-none" />
-      <div className="absolute bottom-1/4 left-1/2 -translate-x-1/2 translate-y-1/2 w-80 h-80 bg-indigo-600/10 rounded-full blur-3xl pointer-events-none" />
-
+    <div className="min-h-screen bg-[#090b10] text-slate-100 flex flex-col justify-center items-center px-4 py-12 selection:bg-slate-700 selection:text-white relative">
       {/* Brand Header */}
       <div className="text-center mb-8 relative z-10">
         <Link href="/" className="inline-flex items-center gap-3 group">
-          <div className="w-12 h-12 rounded-2xl bg-gradient-to-tr from-blue-600 to-indigo-500 flex items-center justify-center shadow-lg shadow-blue-500/25 group-hover:scale-105 transition-transform">
-            <ShieldCheck className="w-7 h-7 text-white" />
+          <div className="w-11 h-11 rounded-xl bg-gradient-to-b from-white/[0.12] to-white/[0.03] border border-white/[0.15] flex items-center justify-center text-white shadow-sm group-hover:scale-105 transition-transform">
+            <ShieldCheck className="w-6 h-6" />
           </div>
-          <span className="text-2xl font-black tracking-tight text-white">
+          <span className="text-2xl font-bold tracking-tight text-white">
             Owed
           </span>
         </Link>
         <p className="mt-2 text-xs sm:text-sm text-slate-400">
-          Never lose a warranty. Never leave money unclaimed.
+          Personal Warranty Vault & Resolution
         </p>
       </div>
 
       {/* Auth Card */}
-      <div className="w-full max-w-md bg-[#111726]/90 backdrop-blur-xl border border-slate-800/90 rounded-2xl p-6 sm:p-8 shadow-2xl relative z-10 space-y-6">
+      <div className="w-full max-w-md bg-[#0e1118] border border-white/[0.1] rounded-2xl p-6 sm:p-8 shadow-2xl relative z-10 space-y-6">
         {/* Tab Switcher */}
-        <div className="flex rounded-xl bg-[#090d16] p-1 border border-slate-800/80">
+        <div className="flex rounded-xl bg-white/[0.03] p-1 border border-white/[0.08]">
           <button
             type="button"
             onClick={() => setMode("signin")}
-            className={`flex-1 py-2 text-xs font-semibold rounded-lg transition-all ${
+            className={`flex-1 py-2 text-xs font-semibold rounded-lg transition-all cursor-pointer ${
               mode === "signin"
-                ? "bg-blue-600 text-white shadow-md shadow-blue-600/30"
+                ? "bg-white/[0.1] text-white shadow-sm border border-white/[0.12]"
                 : "text-slate-400 hover:text-slate-200"
             }`}
           >
@@ -84,9 +80,9 @@ export default function LoginPage() {
           <button
             type="button"
             onClick={() => setMode("signup")}
-            className={`flex-1 py-2 text-xs font-semibold rounded-lg transition-all ${
+            className={`flex-1 py-2 text-xs font-semibold rounded-lg transition-all cursor-pointer ${
               mode === "signup"
-                ? "bg-blue-600 text-white shadow-md shadow-blue-600/30"
+                ? "bg-white/[0.1] text-white shadow-sm border border-white/[0.12]"
                 : "text-slate-400 hover:text-slate-200"
             }`}
           >
@@ -95,9 +91,9 @@ export default function LoginPage() {
           <button
             type="button"
             onClick={() => setMode("magic")}
-            className={`flex-1 py-2 text-xs font-semibold rounded-lg transition-all ${
+            className={`flex-1 py-2 text-xs font-semibold rounded-lg transition-all cursor-pointer ${
               mode === "magic"
-                ? "bg-blue-600 text-white shadow-md shadow-blue-600/30"
+                ? "bg-white/[0.1] text-white shadow-sm border border-white/[0.12]"
                 : "text-slate-400 hover:text-slate-200"
             }`}
           >
@@ -107,15 +103,15 @@ export default function LoginPage() {
 
         {/* Status Alerts */}
         {currentState?.error && (
-          <div className="flex items-start gap-3 p-3.5 rounded-xl bg-red-500/10 border border-red-500/20 text-red-400 text-xs animate-in fade-in slide-in-from-top-1">
-            <AlertCircle className="w-4 h-4 shrink-0 mt-0.5" />
+          <div className="flex items-start gap-2.5 p-3.5 rounded-xl bg-rose-950/30 border border-rose-800/40 text-rose-300 text-xs animate-in fade-in slide-in-from-top-1">
+            <AlertCircle className="w-4 h-4 shrink-0 mt-0.5 text-rose-400" />
             <p className="leading-relaxed">{currentState.error}</p>
           </div>
         )}
 
         {currentState?.message && (
-          <div className="flex items-start gap-3 p-3.5 rounded-xl bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs animate-in fade-in slide-in-from-top-1">
-            <CheckCircle2 className="w-4 h-4 shrink-0 mt-0.5" />
+          <div className="flex items-start gap-2.5 p-3.5 rounded-xl bg-emerald-950/30 border border-emerald-800/40 text-emerald-300 text-xs animate-in fade-in slide-in-from-top-1">
+            <CheckCircle2 className="w-4 h-4 shrink-0 mt-0.5 text-emerald-400" />
             <p className="leading-relaxed">{currentState.message}</p>
           </div>
         )}
@@ -126,13 +122,13 @@ export default function LoginPage() {
             <div className="space-y-1.5">
               <label className="text-xs font-medium text-slate-300">Email Address</label>
               <div className="relative">
-                <Mail className="w-4 h-4 text-slate-500 absolute left-3.5 top-1/2 -translate-y-1/2" />
+                <Mail className="w-4 h-4 text-slate-500 absolute left-3.5 top-1/2 -translate-y-1/2 pointer-events-none" />
                 <input
                   name="email"
                   type="email"
                   required
                   placeholder="name@example.com"
-                  className="w-full pl-10 pr-4 py-2.5 bg-[#090d16] border border-slate-800 rounded-xl text-sm text-slate-200 placeholder-slate-500 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-all"
+                  className="w-full pl-10 pr-4 py-2.5 bg-[#11141c] border border-white/[0.08] focus:border-white/[0.2] rounded-xl text-sm text-slate-200 placeholder-slate-500 focus:outline-none transition-all"
                 />
               </div>
             </div>
@@ -142,13 +138,13 @@ export default function LoginPage() {
                 <label className="text-xs font-medium text-slate-300">Password</label>
               </div>
               <div className="relative">
-                <Lock className="w-4 h-4 text-slate-500 absolute left-3.5 top-1/2 -translate-y-1/2" />
+                <Lock className="w-4 h-4 text-slate-500 absolute left-3.5 top-1/2 -translate-y-1/2 pointer-events-none" />
                 <input
                   name="password"
                   type="password"
                   required
                   placeholder="••••••••"
-                  className="w-full pl-10 pr-4 py-2.5 bg-[#090d16] border border-slate-800 rounded-xl text-sm text-slate-200 placeholder-slate-500 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-all"
+                  className="w-full pl-10 pr-4 py-2.5 bg-[#11141c] border border-white/[0.08] focus:border-white/[0.2] rounded-xl text-sm text-slate-200 placeholder-slate-500 focus:outline-none transition-all"
                 />
               </div>
             </div>
@@ -156,17 +152,17 @@ export default function LoginPage() {
             <button
               type="submit"
               disabled={isPending}
-              className="w-full py-2.5 px-4 rounded-xl bg-blue-600 hover:bg-blue-500 disabled:opacity-50 text-white text-sm font-semibold transition-all flex items-center justify-center gap-2 shadow-lg shadow-blue-600/30 active:scale-[0.98]"
+              className="w-full py-2.5 px-4 rounded-xl bg-white hover:bg-slate-200 disabled:opacity-50 text-slate-950 text-sm font-semibold transition-all flex items-center justify-center gap-2 shadow-sm active:scale-[0.98] cursor-pointer"
             >
               {isPending ? (
                 <>
-                  <Loader2 className="w-4 h-4 animate-spin" />
+                  <Loader2 className="w-4 h-4 animate-spin text-slate-900" />
                   Signing In...
                 </>
               ) : (
                 <>
                   Sign In
-                  <ArrowRight className="w-4 h-4" />
+                  <ArrowRight className="w-4 h-4 text-slate-900" />
                 </>
               )}
             </button>
@@ -178,13 +174,13 @@ export default function LoginPage() {
             <div className="space-y-1.5">
               <label className="text-xs font-medium text-slate-300">Email Address</label>
               <div className="relative">
-                <Mail className="w-4 h-4 text-slate-500 absolute left-3.5 top-1/2 -translate-y-1/2" />
+                <Mail className="w-4 h-4 text-slate-500 absolute left-3.5 top-1/2 -translate-y-1/2 pointer-events-none" />
                 <input
                   name="email"
                   type="email"
                   required
                   placeholder="name@example.com"
-                  className="w-full pl-10 pr-4 py-2.5 bg-[#090d16] border border-slate-800 rounded-xl text-sm text-slate-200 placeholder-slate-500 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-all"
+                  className="w-full pl-10 pr-4 py-2.5 bg-[#11141c] border border-white/[0.08] focus:border-white/[0.2] rounded-xl text-sm text-slate-200 placeholder-slate-500 focus:outline-none transition-all"
                 />
               </div>
             </div>
@@ -192,14 +188,14 @@ export default function LoginPage() {
             <div className="space-y-1.5">
               <label className="text-xs font-medium text-slate-300">Create Password</label>
               <div className="relative">
-                <Lock className="w-4 h-4 text-slate-500 absolute left-3.5 top-1/2 -translate-y-1/2" />
+                <Lock className="w-4 h-4 text-slate-500 absolute left-3.5 top-1/2 -translate-y-1/2 pointer-events-none" />
                 <input
                   name="password"
                   type="password"
                   required
                   minLength={6}
                   placeholder="Min 6 characters"
-                  className="w-full pl-10 pr-4 py-2.5 bg-[#090d16] border border-slate-800 rounded-xl text-sm text-slate-200 placeholder-slate-500 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-all"
+                  className="w-full pl-10 pr-4 py-2.5 bg-[#11141c] border border-white/[0.08] focus:border-white/[0.2] rounded-xl text-sm text-slate-200 placeholder-slate-500 focus:outline-none transition-all"
                 />
               </div>
             </div>
@@ -207,14 +203,14 @@ export default function LoginPage() {
             <div className="space-y-1.5">
               <label className="text-xs font-medium text-slate-300">Confirm Password</label>
               <div className="relative">
-                <KeyRound className="w-4 h-4 text-slate-500 absolute left-3.5 top-1/2 -translate-y-1/2" />
+                <KeyRound className="w-4 h-4 text-slate-500 absolute left-3.5 top-1/2 -translate-y-1/2 pointer-events-none" />
                 <input
                   name="confirmPassword"
                   type="password"
                   required
                   minLength={6}
                   placeholder="Repeat password"
-                  className="w-full pl-10 pr-4 py-2.5 bg-[#090d16] border border-slate-800 rounded-xl text-sm text-slate-200 placeholder-slate-500 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-all"
+                  className="w-full pl-10 pr-4 py-2.5 bg-[#11141c] border border-white/[0.08] focus:border-white/[0.2] rounded-xl text-sm text-slate-200 placeholder-slate-500 focus:outline-none transition-all"
                 />
               </div>
             </div>
@@ -222,17 +218,17 @@ export default function LoginPage() {
             <button
               type="submit"
               disabled={isPending}
-              className="w-full py-2.5 px-4 rounded-xl bg-blue-600 hover:bg-blue-500 disabled:opacity-50 text-white text-sm font-semibold transition-all flex items-center justify-center gap-2 shadow-lg shadow-blue-600/30 active:scale-[0.98]"
+              className="w-full py-2.5 px-4 rounded-xl bg-white hover:bg-slate-200 disabled:opacity-50 text-slate-950 text-sm font-semibold transition-all flex items-center justify-center gap-2 shadow-sm active:scale-[0.98] cursor-pointer"
             >
               {isPending ? (
                 <>
-                  <Loader2 className="w-4 h-4 animate-spin" />
+                  <Loader2 className="w-4 h-4 animate-spin text-slate-900" />
                   Creating Account...
                 </>
               ) : (
                 <>
                   Create Account
-                  <ArrowRight className="w-4 h-4" />
+                  <ArrowRight className="w-4 h-4 text-slate-900" />
                 </>
               )}
             </button>
@@ -244,13 +240,13 @@ export default function LoginPage() {
             <div className="space-y-1.5">
               <label className="text-xs font-medium text-slate-300">Email Address</label>
               <div className="relative">
-                <Mail className="w-4 h-4 text-slate-500 absolute left-3.5 top-1/2 -translate-y-1/2" />
+                <Mail className="w-4 h-4 text-slate-500 absolute left-3.5 top-1/2 -translate-y-1/2 pointer-events-none" />
                 <input
                   name="email"
                   type="email"
                   required
                   placeholder="name@example.com"
-                  className="w-full pl-10 pr-4 py-2.5 bg-[#090d16] border border-slate-800 rounded-xl text-sm text-slate-200 placeholder-slate-500 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-all"
+                  className="w-full pl-10 pr-4 py-2.5 bg-[#11141c] border border-white/[0.08] focus:border-white/[0.2] rounded-xl text-sm text-slate-200 placeholder-slate-500 focus:outline-none transition-all"
                 />
               </div>
               <p className="text-[11px] text-slate-500">
@@ -261,16 +257,16 @@ export default function LoginPage() {
             <button
               type="submit"
               disabled={isPending}
-              className="w-full py-2.5 px-4 rounded-xl bg-indigo-600 hover:bg-indigo-500 disabled:opacity-50 text-white text-sm font-semibold transition-all flex items-center justify-center gap-2 shadow-lg shadow-indigo-600/30 active:scale-[0.98]"
+              className="w-full py-2.5 px-4 rounded-xl bg-white hover:bg-slate-200 disabled:opacity-50 text-slate-950 text-sm font-semibold transition-all flex items-center justify-center gap-2 shadow-sm active:scale-[0.98] cursor-pointer"
             >
               {isPending ? (
                 <>
-                  <Loader2 className="w-4 h-4 animate-spin" />
+                  <Loader2 className="w-4 h-4 animate-spin text-slate-900" />
                   Sending Magic Link...
                 </>
               ) : (
                 <>
-                  <Sparkles className="w-4 h-4" />
+                  <Sparkles className="w-4 h-4 text-slate-900" />
                   Send Magic Link
                 </>
               )}
@@ -279,12 +275,12 @@ export default function LoginPage() {
         )}
 
         {/* Return to Dashboard */}
-        <div className="pt-4 border-t border-slate-800/80 text-center">
+        <div className="pt-4 border-t border-white/[0.08] text-center">
           <Link
             href="/"
-            className="text-xs text-slate-500 hover:text-slate-300 transition-colors inline-flex items-center gap-1"
+            className="text-xs text-slate-400 hover:text-slate-200 transition-colors inline-flex items-center gap-1"
           >
-            &larr; Return to dashboard preview
+            &larr; Return to vault overview
           </Link>
         </div>
       </div>
