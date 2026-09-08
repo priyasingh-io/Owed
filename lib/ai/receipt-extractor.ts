@@ -15,7 +15,7 @@ export const receiptExtractionSchema = z.object({
     .nullable()
     .describe("Purchase date formatted strictly as YYYY-MM-DD, or null if unreadable"),
   price: z.number().nullable().describe("Total purchase price paid"),
-  currency: z.string().default("INR").describe("Currency symbol or code (e.g. INR, USD)"),
+  currency: z.string().describe("Currency symbol or code (e.g. INR, USD, $)"),
   warranty_months: z
     .number()
     .int()

@@ -27,9 +27,10 @@ export const itemCreateSchema = z.object({
     .optional(),
   receipt_file_url: z.string().url().nullable().optional().or(z.string().nullable().optional()),
   extraction_confidence: z.number().min(0).max(1).nullable().optional(),
+  status: z.enum(["active", "expiring_soon", "expired", "archived"]).optional(),
 });
 
 export const itemUpdateSchema = itemCreateSchema.partial();
 
-export type ItemCreateInput = z.infer<typeof itemCreateSchema>;
-export type ItemUpdateInput = z.infer<typeof itemUpdateSchema>;
+export type ItemCreateInput = z.input<typeof itemCreateSchema>;
+export type ItemUpdateInput = z.input<typeof itemUpdateSchema>;

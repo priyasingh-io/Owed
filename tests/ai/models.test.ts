@@ -37,15 +37,15 @@ describe("AI Models Resolver", () => {
 
   it("instantiates model instance for supported providers", () => {
     const gatewayModel = getModel("gateway");
-    expect((gatewayModel as any).modelId).toBe(DEFAULT_MODELS.gateway);
+    expect((gatewayModel as { modelId?: string }).modelId).toBe(DEFAULT_MODELS.gateway);
 
     const anthropicModel = getModel("anthropic");
-    expect((anthropicModel as any).modelId).toBe(DEFAULT_MODELS.anthropic);
+    expect((anthropicModel as { modelId?: string }).modelId).toBe(DEFAULT_MODELS.anthropic);
 
     const openaiModel = getModel("openai");
-    expect((openaiModel as any).modelId).toBe(DEFAULT_MODELS.openai);
+    expect((openaiModel as { modelId?: string }).modelId).toBe(DEFAULT_MODELS.openai);
 
     const googleModel = getModel("google");
-    expect((googleModel as any).modelId).toBe(DEFAULT_MODELS.google);
+    expect((googleModel as { modelId?: string }).modelId).toBe(DEFAULT_MODELS.google);
   });
 });
