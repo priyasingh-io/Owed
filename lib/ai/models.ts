@@ -6,7 +6,7 @@ import { gateway, type LanguageModel } from "ai";
 export type SupportedAIProvider = "gateway" | "anthropic" | "openai" | "google";
 
 export const DEFAULT_MODELS: Record<SupportedAIProvider, string> = {
-  gateway: "anthropic/claude-3-5-sonnet",
+  gateway: "openai/gpt-4o",
   anthropic: "claude-3-5-sonnet-latest",
   openai: "gpt-4o",
   google: "gemini-2.0-flash",
