@@ -1,6 +1,7 @@
 "use client";
 
-import React, { useState, useMemo } from "react";
+import React, { useState, useMemo, useEffect } from "react";
+import Link from "next/link";
 import {
   ShieldCheck,
   Receipt,
@@ -15,10 +16,15 @@ import {
   ExternalLink,
   ChevronRight,
   Sparkles,
+  LogIn,
+  LogOut,
+  User as UserIcon,
 } from "lucide-react";
 import { getItemStatus } from "@/lib/domain/warranty";
 import { ITEM_CATEGORIES } from "@/lib/domain/categories";
 import { ItemStatus } from "@/lib/types/database";
+import { createClient } from "@/lib/supabase/client";
+import { signOut } from "@/app/auth/actions";
 
 interface DisplayItem {
   id: string;
@@ -95,6 +101,24 @@ export default function DashboardPage() {
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedCategory, setSelectedCategory] = useState<string>("All");
   const [selectedStatus, setSelectedStatus] = useState<string>("all");
+  const [user, setUser] = useState<{ email?: string | null } | null>(null);
+
+  useEffect(() => {
+    const supabase = createClient();
+    supabase.auth.getUser().then(({ data }) => {
+      setUser(data.user);
+    });
+
+    const {
+      data: { subscription },
+    } = supabase.auth.onAuthStateChange((_event, session) => {
+      setUser(session?.user ?? null);
+    });
+
+    return () => {
+      subscription.unsubscribe();
+    };
+  }, []);
 
   const today = "2026-09-08";
 
@@ -195,6 +219,32 @@ export default function DashboardPage() {
               <Plus className="w-4 h-4 shrink-0" />
               <span>Add<span className="hidden sm:inline"> Manually</span></span>
             </button>
+
+            {user ? (
+              <div className="flex items-center gap-2 pl-2 border-l border-slate-800">
+                <div className="hidden md:flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg bg-[#111726] border border-slate-800 text-xs text-slate-300">
+                  <UserIcon className="w-3.5 h-3.5 text-blue-400" />
+                  <span className="max-w-[120px] truncate">{user.email}</span>
+                </div>
+                <form action={signOut}>
+                  <button
+                    type="submit"
+                    title="Sign Out"
+                    className="p-2 rounded-lg bg-slate-800/80 hover:bg-red-500/20 hover:text-red-400 text-slate-400 border border-slate-700 transition-colors"
+                  >
+                    <LogOut className="w-4 h-4" />
+                  </button>
+                </form>
+              </div>
+            ) : (
+              <Link
+                href="/login"
+                className="inline-flex items-center gap-1.5 px-3 py-2 rounded-lg bg-slate-800/80 hover:bg-slate-700 text-slate-200 text-xs sm:text-sm font-medium border border-slate-700 transition-all active:scale-95"
+              >
+                <LogIn className="w-4 h-4" />
+                <span>Sign In</span>
+              </Link>
+            )}
           </div>
         </div>
       </header>
