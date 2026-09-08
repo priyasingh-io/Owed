@@ -174,26 +174,26 @@ export default function DashboardPage() {
               <span className="text-xl font-bold tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-white to-slate-300">
                 Owed
               </span>
-              <span className="ml-2 text-xs font-semibold px-2 py-0.5 rounded-md bg-blue-500/10 text-blue-400 border border-blue-500/20">
+              <span className="hidden sm:inline-block ml-2 text-xs font-semibold px-2 py-0.5 rounded-md bg-blue-500/10 text-blue-400 border border-blue-500/20">
                 ClaimIt MVP
               </span>
             </div>
           </div>
 
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-2 sm:gap-3">
             <button
               id="upload-receipt-btn"
-              className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-blue-600 hover:bg-blue-500 text-white text-sm font-medium transition-all shadow-md shadow-blue-600/30 active:scale-95"
+              className="inline-flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-2 rounded-lg bg-blue-600 hover:bg-blue-500 text-white text-xs sm:text-sm font-medium transition-all shadow-md shadow-blue-600/30 active:scale-95"
             >
-              <UploadCloud className="w-4 h-4" />
-              Upload Receipt
+              <UploadCloud className="w-4 h-4 shrink-0" />
+              <span>Upload<span className="hidden sm:inline"> Receipt</span></span>
             </button>
             <button
               id="add-item-btn"
-              className="inline-flex items-center gap-2 px-3.5 py-2 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-200 text-sm font-medium border border-slate-700 transition-all active:scale-95"
+              className="inline-flex items-center gap-1.5 sm:gap-2 px-3 sm:px-3.5 py-2 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs sm:text-sm font-medium border border-slate-700 transition-all active:scale-95"
             >
-              <Plus className="w-4 h-4" />
-              Add Manually
+              <Plus className="w-4 h-4 shrink-0" />
+              <span>Add<span className="hidden sm:inline"> Manually</span></span>
             </button>
           </div>
         </div>
