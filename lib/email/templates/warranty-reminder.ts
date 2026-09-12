@@ -109,7 +109,7 @@ export function generateWarrantyReminderEmail(
 
   const textContent = `
 WARRANTY EXPIRATION REMINDER: ${productName} [${urgency.badgeText}]
-==================================================
+--------------------------------------------------
 
 ${urgency.headline}
 ${urgency.subtext}
