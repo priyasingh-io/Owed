@@ -20,4 +20,14 @@ describe("Supabase Browser Client", () => {
     expect(supabase).toBeDefined();
     expect(supabase.auth).toBeDefined();
   });
+
+  it("safely falls back to default credentials when env variables are not defined", () => {
+    delete process.env.NEXT_PUBLIC_SUPABASE_URL;
+    delete process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
+    delete process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY;
+
+    const supabase = createClient();
+    expect(supabase).toBeDefined();
+    expect(supabase.auth).toBeDefined();
+  });
 });
